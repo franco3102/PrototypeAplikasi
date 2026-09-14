@@ -1,16 +1,55 @@
-# React + Vite
+# Tidura — ERP & Kasir Penjualan (Prototype)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Aplikasi kasir + ERP ringan untuk toko springbed "Tidura", dibangun dengan React + Vite.
+Semua data adalah data demo di memori (tidak ada backend) — cocok untuk presentasi ke client.
 
-Currently, two official plugins are available:
+## Cara menjalankan
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Buka URL yang ditampilkan (biasanya http://localhost:5173).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Login demo
 
-## Expanding the Oxlint configuration
+Password bebas (mode demo). Gunakan salah satu akun di layar login, atau klik tombol "login cepat":
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+| Username        | Role              | Akses                                     |
+|-----------------|-------------------|--------------------------------------------|
+| andi.owner      | Pemilik / Admin   | Semua modul, termasuk user & hak akses      |
+| maya.manajer    | Manajer Toko      | Semua modul operasional (lihat-only user)   |
+| dewi.kasir      | Kasir             | Kasir, kas/shift, pelanggan, lihat produk   |
+| fajar.kasir     | Kasir             | Sama seperti Dewi                           |
+| joko.gudang     | Staff Gudang      | Produk, barang masuk/keluar, supplier       |
+
+## Fitur utama
+
+- **Login & hak akses (RBAC)** — role Pemilik, Manajer, Kasir, Staff Gudang dengan matriks
+  izin per modul (lihat/tambah/ubah/hapus), bisa diatur di menu **Hak akses** dan bisa
+  menambah role baru.
+- **Kelola pengguna** — tambah/ubah/nonaktifkan akun staff, assign role.
+- **Kasir (POS)** — pencarian & kategori produk, keranjang, diskon (nominal/persen), PPN
+  otomatis, pilih pelanggan, tahan/lanjutkan transaksi, banyak metode pembayaran termasuk
+  **QRIS** (kode QR + simulasi konfirmasi pembayaran), tunai dengan hitung kembalian, cetak
+  struk.
+- **Kas & shift** — buka/tutup kasir dengan modal awal, rekonsiliasi kas (selisih), riwayat shift.
+- **Produk & stok** — tambah/ubah/hapus produk, harga beli vs harga jual, status stok.
+- **Barang masuk/keluar** — penerimaan dari supplier, retur/penyesuaian stok, riwayat.
+- **Supplier** — data pemasok & termin pembayaran.
+- **Pelanggan** — data member/korporat, poin, riwayat belanja per pelanggan.
+- **Laporan** — ringkasan penjualan, produk terlaris, nilai stok, estimasi laba rugi.
+- **Pengaturan toko** — profil toko, PPN, metode pembayaran aktif, format struk/invoice.
+- **Log aktivitas** — audit trail semua aksi penting per pengguna.
+
+## Struktur folder
+
+```
+src/
+  context/AppContext.jsx   state & aksi global (auth, RBAC, produk, penjualan, dll)
+  data/seed.js             data demo awal
+  utils/                   helper format & definisi modul/permission
+  components/              komponen UI bersama (Sidebar, Topbar, Modal, QRIS, Receipt)
+  pages/                   satu file per halaman/menu
+```
