@@ -53,3 +53,21 @@ src/
   components/              komponen UI bersama (Sidebar, Topbar, Modal, QRIS, Receipt)
   pages/                   satu file per halaman/menu
 ```
+
+## Deploy ke Netlify
+
+Konfigurasi sudah disiapkan lewat `netlify.toml` (build command, publish dir, Node 22,
+dan SPA redirect). Di dashboard Netlify, kosongkan/biarkan default kolom **Build command**
+dan **Publish directory** supaya `netlify.toml` yang dipakai.
+
+**Penting:** jangan meng-commit folder `node_modules` ke repo. Kalau di repo lama sudah
+terlanjur ada, hapus dulu:
+
+```bash
+git rm -r --cached node_modules
+git commit -m "hapus node_modules dari repo"
+git push
+```
+
+Folder `node_modules` yang ikut ter-commit adalah penyebab error
+`sh: 1: vite: Permission denied` (exit code 127) saat build di Netlify.

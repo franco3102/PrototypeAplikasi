@@ -1,0 +1,13 @@
+[build]
+  command = "npm install && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--include=optional"
+
+# SPA fallback: semua route diarahkan ke index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
