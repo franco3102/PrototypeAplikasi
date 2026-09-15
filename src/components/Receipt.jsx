@@ -6,6 +6,7 @@ export default function Receipt({ sale }) {
   const { settings } = useApp();
   if (!sale) return null;
 
+  // test
   return (
     <div className="receipt-print-area">
       <div className="receipt-paper">
