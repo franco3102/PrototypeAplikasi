@@ -10,4 +10,10 @@ html, body, #root {
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior-y: none;
+}
+
+img, svg, video, canvas {
+  max-width: 100%;
 }

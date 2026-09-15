@@ -53,7 +53,7 @@ export default function Pengguna() {
       </div>
 
       <div className="panel">
-        <table className="data-table">
+        <div className="table-scroll"><table className="data-table">
           <thead><tr><th>Pengguna</th><th>Role</th><th>Login terakhir</th><th>Status</th><th className="ta-right">Aksi</th></tr></thead>
           <tbody>
             {users.map((u) => (
@@ -84,7 +84,7 @@ export default function Pengguna() {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table></div>
       </div>
 
       {showAdd && (

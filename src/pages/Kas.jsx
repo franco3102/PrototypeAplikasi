@@ -76,7 +76,7 @@ export default function Kas() {
         {shifts.length === 0 ? (
           <EmptyState>Belum ada riwayat shift.</EmptyState>
         ) : (
-          <table className="data-table">
+          <div className="table-scroll"><table className="data-table">
             <thead><tr><th>Kasir</th><th>Buka</th><th>Tutup</th><th className="ta-right">Penjualan</th><th className="ta-right">Selisih</th><th>Status</th></tr></thead>
             <tbody>
               {shifts.map((s) => (
@@ -90,7 +90,7 @@ export default function Kas() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         )}
       </div>
     </div>

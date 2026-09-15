@@ -101,7 +101,7 @@ export default function Stok() {
       )}
 
       <div className="panel">
-        <table className="data-table">
+        <div className="table-scroll"><table className="data-table">
           <thead>
             <tr>
               <th>Produk</th><th>Kategori</th><th className="ta-right">Harga beli</th><th className="ta-right">Harga jual</th><th>Stok</th>
@@ -133,7 +133,7 @@ export default function Stok() {
               <tr><td colSpan={6} className="empty-state">Produk tidak ditemukan.</td></tr>
             )}
           </tbody>
-        </table>
+        </table></div>
       </div>
 
       {confirmDelete && (

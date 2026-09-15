@@ -78,7 +78,7 @@ export default function Dashboard() {
         {sales.length === 0 ? (
           <EmptyState>Belum ada transaksi pada sesi ini. Mulai dari menu Kasir.</EmptyState>
         ) : (
-          <table className="data-table">
+          <div className="table-scroll"><table className="data-table">
             <thead><tr><th>Waktu</th><th>Kasir</th><th>Item</th><th>Pembayaran</th><th className="ta-right">Total</th></tr></thead>
             <tbody>
               {sales.slice().reverse().slice(0, 8).map((s) => (
@@ -91,7 +91,7 @@ export default function Dashboard() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         )}
       </div>
     </div>

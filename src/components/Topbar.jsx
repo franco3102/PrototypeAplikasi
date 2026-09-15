@@ -1,5 +1,5 @@
 import React from "react";
-import { Wallet } from "lucide-react";
+import { Wallet, Menu, PanelLeftClose } from "lucide-react";
 import { useApp } from "../context/AppContext";
 
 export const PAGE_TITLES = {
@@ -18,14 +18,25 @@ export const PAGE_TITLES = {
   log: ["Log aktivitas", "Riwayat aktivitas seluruh pengguna"],
 };
 
-export default function Topbar({ tabKey }) {
+export default function Topbar({ tabKey, onToggleSidebar, sidebarVisible }) {
   const { currentShift } = useApp();
   const [title, sub] = PAGE_TITLES[tabKey] || ["Tidura", ""];
   return (
     <header className="topbar">
-      <div>
-        <h1 className="topbar__title">{title}</h1>
-        <p className="topbar__sub">{sub}</p>
+      <div className="topbar__left">
+        <button
+          className="topbar__toggle"
+          onClick={onToggleSidebar}
+          aria-label={sidebarVisible ? "Sembunyikan menu" : "Tampilkan menu"}
+          aria-expanded={Boolean(sidebarVisible)}
+          title={sidebarVisible ? "Sembunyikan menu" : "Tampilkan menu"}
+        >
+          {sidebarVisible ? <PanelLeftClose size={19} /> : <Menu size={19} />}
+        </button>
+        <div className="topbar__headings">
+          <h1 className="topbar__title">{title}</h1>
+          <p className="topbar__sub">{sub}</p>
+        </div>
       </div>
       <div className="topbar__right">
         {currentShift && (

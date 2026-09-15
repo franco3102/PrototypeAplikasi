@@ -54,7 +54,7 @@ export default function Pelanggan() {
       </div>
 
       <div className="panel">
-        <table className="data-table">
+        <div className="table-scroll"><table className="data-table">
           <thead><tr><th>Nama</th><th>Tipe</th><th>Telepon</th><th className="ta-right">Total belanja</th><th className="ta-right">Poin</th><th className="ta-right">Aksi</th></tr></thead>
           <tbody>
             {customers.map((c) => (
@@ -73,7 +73,7 @@ export default function Pelanggan() {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table></div>
       </div>
 
       {showAdd && (
@@ -96,7 +96,7 @@ export default function Pelanggan() {
           {historyFor(detail.id).length === 0 ? (
             <EmptyState>Belum ada transaksi dari pelanggan ini pada sesi ini.</EmptyState>
           ) : (
-            <table className="data-table">
+            <div className="table-scroll"><table className="data-table">
               <thead><tr><th>Invoice</th><th>Waktu</th><th>Metode</th><th className="ta-right">Total</th></tr></thead>
               <tbody>
                 {historyFor(detail.id).slice().reverse().map((s) => (
@@ -108,7 +108,7 @@ export default function Pelanggan() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table></div>
           )}
         </Modal>
       )}

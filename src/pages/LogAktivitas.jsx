@@ -23,7 +23,7 @@ export default function LogAktivitas() {
         {filtered.length === 0 ? (
           <EmptyState>Tidak ada aktivitas yang cocok.</EmptyState>
         ) : (
-          <table className="data-table">
+          <div className="table-scroll"><table className="data-table">
             <thead><tr><th>Waktu</th><th>Pengguna</th><th>Aktivitas</th><th>Detail</th></tr></thead>
             <tbody>
               {filtered.map((l) => (
@@ -35,7 +35,7 @@ export default function LogAktivitas() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         )}
       </div>
     </div>

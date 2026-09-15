@@ -47,7 +47,7 @@ export default function Supplier() {
         {suppliers.length === 0 ? (
           <EmptyState>Belum ada data supplier.</EmptyState>
         ) : (
-          <table className="data-table">
+          <div className="table-scroll"><table className="data-table">
             <thead><tr><th>Supplier</th><th>Kontak</th><th>Telepon</th><th>Termin</th><th className="ta-right">Aksi</th></tr></thead>
             <tbody>
               {suppliers.map((s) => (
@@ -68,7 +68,7 @@ export default function Supplier() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         )}
       </div>
 

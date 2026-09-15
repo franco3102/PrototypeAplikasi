@@ -87,7 +87,7 @@ export default function Movement({ type }) {
 
       <div className="panel">
         <div className="panel__head"><h2>Riwayat {isMasuk ? "barang masuk" : "barang keluar"}</h2></div>
-        <table className="data-table">
+        <div className="table-scroll"><table className="data-table">
           <thead><tr><th>Tanggal</th><th>Produk</th><th className="ta-right">Jumlah</th>{isMasuk && <th>Supplier</th>}<th>Catatan</th><th>Oleh</th></tr></thead>
           <tbody>
             {list.map((m) => (
@@ -102,7 +102,7 @@ export default function Movement({ type }) {
             ))}
             {list.length === 0 && <tr><td colSpan={isMasuk ? 6 : 5} className="empty-state">Belum ada riwayat.</td></tr>}
           </tbody>
-        </table>
+        </table></div>
       </div>
     </div>
   );

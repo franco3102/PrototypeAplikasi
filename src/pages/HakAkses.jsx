@@ -68,7 +68,7 @@ export default function HakAkses() {
             <p className="field-hint">Role Pemilik/Admin selalu memiliki akses penuh dan tidak dapat dibatasi, untuk mencegah terkunci dari sistem.</p>
           )}
 
-          <table className="data-table permission-table">
+          <div className="table-scroll"><table className="data-table permission-table">
             <thead>
               <tr>
                 <th>Modul</th>
@@ -96,7 +96,7 @@ export default function HakAkses() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         </div>
       )}
 

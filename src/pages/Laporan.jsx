@@ -72,14 +72,14 @@ export default function Laporan() {
             {Object.keys(byMethod).length === 0 ? (
               <EmptyState>Belum ada transaksi pada sesi ini.</EmptyState>
             ) : (
-              <table className="data-table">
+              <div className="table-scroll"><table className="data-table">
                 <thead><tr><th>Metode</th><th className="ta-right">Total</th></tr></thead>
                 <tbody>
                   {Object.entries(byMethod).map(([k, v]) => (
                     <tr key={k}><td>{k}</td><td className="ta-right">{formatRp(v)}</td></tr>
                   ))}
                 </tbody>
-              </table>
+              </table></div>
             )}
           </div>
         </>
@@ -88,28 +88,28 @@ export default function Laporan() {
       {tab === "produk" && (
         <div className="panel">
           <div className="panel__head"><h2>Produk terlaris bulan ini (contoh)</h2></div>
-          <table className="data-table">
+          <div className="table-scroll"><table className="data-table">
             <thead><tr><th>Produk</th><th className="ta-right">Terjual</th><th className="ta-right">Omzet</th></tr></thead>
             <tbody>
               {TOP_PRODUCTS.map((t) => (
                 <tr key={t.name}><td>{t.name}</td><td className="ta-right">{t.terjual} unit</td><td className="ta-right">{formatRp(t.omzet)}</td></tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         </div>
       )}
 
       {tab === "stok" && (
         <div className="panel">
           <div className="panel__head"><h2>Nilai stok per kategori</h2></div>
-          <table className="data-table">
+          <div className="table-scroll"><table className="data-table">
             <thead><tr><th>Kategori</th><th className="ta-right">Nilai stok</th></tr></thead>
             <tbody>
               {Object.entries(stockValueByCategory).map(([k, v]) => (
                 <tr key={k}><td>{k}</td><td className="ta-right">{formatRp(v)}</td></tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         </div>
       )}
 
@@ -120,14 +120,14 @@ export default function Laporan() {
         return (
           <div className="panel">
             <div className="panel__head"><h2>Estimasi laba rugi sesi ini</h2></div>
-            <table className="data-table">
+            <div className="table-scroll"><table className="data-table">
               <tbody>
                 <tr><td>Omzet penjualan</td><td className="ta-right">{formatRp(omzetKotor)}</td></tr>
                 <tr><td>Diskon diberikan</td><td className="ta-right">-{formatRp(sessionDiscount)}</td></tr>
                 <tr><td>Perkiraan HPP (harga pokok penjualan)</td><td className="ta-right">-{formatRp(estimatedHpp)}</td></tr>
                 <tr className="data-table__strong"><td>Estimasi laba kotor</td><td className="ta-right">{formatRp(estimatedProfit)}</td></tr>
               </tbody>
-            </table>
+            </table></div>
             <p className="field-hint">Perhitungan berdasarkan selisih harga jual dan harga beli (modal) tiap produk yang terjual pada sesi ini. Belum memperhitungkan biaya operasional lain.</p>
           </div>
         );

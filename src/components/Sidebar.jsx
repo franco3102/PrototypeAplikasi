@@ -1,7 +1,7 @@
 import React from "react";
 import {
   LayoutDashboard, ShoppingCart, Boxes, ArrowDownToLine, ArrowUpFromLine, Truck,
-  Users, BarChart3, BedDouble, Wallet, UserCog, ShieldCheck, Settings, History, LogOut,
+  Users, BarChart3, BedDouble, Wallet, UserCog, ShieldCheck, Settings, History, LogOut, X,
 } from "lucide-react";
 import { useApp } from "../context/AppContext";
 import { initials } from "../utils/helpers";
@@ -43,17 +43,20 @@ export const NAV_GROUPS = [
   },
 ];
 
-export default function Sidebar({ active, onNavigate }) {
+export default function Sidebar({ active, onNavigate, onClose, hidden = false }) {
   const { currentUser, can, logout } = useApp();
 
   return (
-    <aside className="sidebar">
+    <aside className="sidebar" aria-hidden={hidden} inert={hidden || undefined}>
       <div className="brand">
         <span className="brand__mark"><BedDouble size={18} strokeWidth={2} /></span>
-        <div>
+        <div className="brand__text">
           <div className="brand__name">Tidura</div>
           <div className="brand__tag">ERP &amp; Kasir springbed</div>
         </div>
+        <button className="sidebar__close" onClick={onClose} aria-label="Tutup menu" title="Tutup menu">
+          <X size={18} />
+        </button>
       </div>
       <nav className="nav">
         {NAV_GROUPS.map((group) => {
@@ -70,8 +73,9 @@ export default function Sidebar({ active, onNavigate }) {
                     key={item.key}
                     className={`nav__item ${isActive ? "nav__item--active" : ""}`}
                     onClick={() => onNavigate(item.key)}
+                    title={item.label}
                   >
-                    <Icon size={17} strokeWidth={2} />
+                    <Icon size={17} strokeWidth={2} className="nav__icon" />
                     <span>{item.label}</span>
                   </button>
                 );
